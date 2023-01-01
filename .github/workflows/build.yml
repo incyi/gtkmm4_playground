@@ -17,5 +17,8 @@ jobs:
     - name: Install libgtkmm-3.0-1v5
       run: sudo apt-get install -y libgtkmm-3.0-1v5
 
-    - name: Build
+    - name: Create output folder
+      run: mkdir bin
+      
+    - name: Make
       run: make
