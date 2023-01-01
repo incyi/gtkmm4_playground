@@ -18,6 +18,5 @@ hello_world: $(SRC)
 	$(CFLAGS) \
 	$(SRC) \
 	-o $(OUTPUT_FILE) \
-	$(SOURCES)/Main.cpp \
 	-std=c++20
 	
