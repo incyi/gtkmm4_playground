@@ -1,0 +1,24 @@
+name: Build
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Install libgtkmm-3.0-dev
+      run: sudo apt-get install -y libgtkmm-3.0-dev
+
+    - name: Create output folder
+      run: mkdir bin
+      
+    - name: Make
+      run: make
