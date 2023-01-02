@@ -18,7 +18,7 @@ jobs:
             base-devel
             git
             mingw-w64-x86_64-gtkmm3
-            pkgconfig
+            mingw-w64-x86_64-pkgconf
             
       - uses: actions/checkout@v3
 
