@@ -15,8 +15,8 @@ SRC += Source/MainWindow.cpp
 
 INCLUDE_FOLDER += Include
 
-OUTPUT_FILE = bin/gtkmm4_playground
-OUTPUT_FOLDER = bin
+OUTPUT_FILE = Bin/gtkmm4_playground
+OUTPUT_FOLDER = Bin
 
 gtkmm4_playground: $(SRC)
 ifeq ($(OS),Windows_NT)
@@ -48,4 +48,4 @@ run:
 
 ## Copy rquired dlls to run it on Windows ! Credits to: https://stackoverflow.com/questions/49092784/
 distrib:
-	ldd $(OUTPUT_FILE) | grep '\/mingw.*\.dll' -o | xargs -I{} cp "{}" ./bin
+	ldd $(OUTPUT_FILE) | grep '\/mingw.*\.dll' -o | xargs -I{} cp "{}" ./$(OUTPUT_FOLDER)
