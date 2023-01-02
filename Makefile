@@ -11,6 +11,7 @@ CXX = g++
 CFLAGS  = -g -Wall
 
 SRC += Source/Main.cpp
+SRC += Source/MainWindow.cpp
 
 OUTPUT_FILE = bin/gtkmm4_playground
 OUTPUT_FOLDER = bin
