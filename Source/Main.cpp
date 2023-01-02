@@ -6,11 +6,15 @@
 
 #include <gtkmm.h>
 
+#include "MainWindow.h"
+
 int main(int argc, char** argv)
 {
-  auto app = Gtk::Application::create(argc, argv);
-  Gtk::Window window;
-  window.set_default_size(400, 300);
+  int status;
+  auto app = Gtk::Application::create("io.github.incyi.gtkmm4_playground");
+  MainWindow mainwindow;
   
-  return app->run(window);
+  //Shows the window and returns when it is closed.
+  status = app->run(mainwindow);
+  return status;
 }
