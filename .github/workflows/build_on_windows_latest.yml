@@ -1,0 +1,40 @@
+name: Build on Windows latest
+
+on:
+  push:
+    branches: [ "*" ]
+  pull_request:
+    branches: [ "*" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: msys2/setup-msys2@v2
+        with:
+          update: true
+          install: >-
+            base-devel
+            git
+            mingw-w64-x86_64-gcc
+            mingw-w64-x86_64-gtkmm3
+            mingw-w64-x86_64-pkgconf
+            
+      - name: '🧰 Checkout'     
+        uses: actions/checkout@v3
+
+      - name: Create output folder
+        run: mkdir bin
+      
+      - name: '🚧 Make'
+        run: make
+      
+      - name: '🏆 Archive production artifacts'
+        uses: actions/upload-artifact@v3
+        with:
+          name: build files
+          path: |
+            bin
