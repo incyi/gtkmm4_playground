@@ -19,6 +19,7 @@ jobs:
           install: >-
             base-devel
             git
+            mingw-w64-x86_64-gcc
             mingw-w64-x86_64-gtkmm3
             mingw-w64-x86_64-pkgconf
             
