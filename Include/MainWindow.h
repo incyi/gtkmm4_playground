@@ -6,7 +6,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <gtkmm.h>
+#include <gtkmm/box.h>
+#include <gtkmm/button.h>
+#include <gtkmm/window.h>
 
 class MainWindow : public Gtk::Window
 {
@@ -16,6 +18,7 @@ public:
 
 protected:
   //Child widgets:
+  Gtk::Box m_box1;
   Gtk::Button m_exit_button;
   
   //Signal handlers:
