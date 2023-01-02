@@ -8,33 +8,28 @@ on:
 
 jobs:
   build:
-
     runs-on: windows-latest
+    
+    steps:
+      - uses: msys2/setup-msys2@v2
+        with:
+          update: true
+          install: >-
+            base-devel
+            git
+            mingw-w64-x86_64-gtkmm3
+            
+      - uses: actions/checkout@v3
 
-defaults:
-    run:
-      shell: msys2 {0}
-  steps:
-    - uses: msys2/setup-msys2@v2
-    with:
-      update: true
-      install: >-
-        base-devel
-        git
-        mingw-w64-x86_64-gtkmm3
-        
-    - uses: actions/checkout@v3
-    - run: git describe --dirty
-
-    - name: Create output folder
-      run: mkdir bin
+      - name: Create output folder
+        run: mkdir bin
       
-    - name: Make
-      run: make
+      - name: Make
+        run: make
       
-    - name: Archive production artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: build files
-        path: |
-          bin
+      - name: Archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build files
+          path: |
+            bin
