@@ -3,8 +3,9 @@
  * 
  */
 
-#include "MainWindow.h"
 #include <iostream>
+
+#include "MainWindow.h"
 
 MainWindow::MainWindow()
 : m_exit_button("Exit")
