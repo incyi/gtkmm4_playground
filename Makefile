@@ -35,6 +35,6 @@ else
 	$(SRC) \
 	-I $(INCLUDE_FOLDER) \
 	-o $(OUTPUT_FILE) \
-	-std=c++20 \
+	-std=c++17 \
 	`pkg-config --cflags --libs gtkmm-3.0`
 endif

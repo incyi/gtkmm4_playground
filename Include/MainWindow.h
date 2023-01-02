@@ -15,6 +15,11 @@ public:
   virtual ~MainWindow();
 
 protected:
+  //Child widgets:
+  Gtk::Button m_exit_button;
+  
+  //Signal handlers:
+  void on_exit_button_clicked();
 
 private:
 
