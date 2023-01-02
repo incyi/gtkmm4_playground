@@ -18,7 +18,7 @@ INCLUDE_FOLDER += Include
 OUTPUT_FILE = bin/gtkmm4_playground
 OUTPUT_FOLDER = bin
 
-hello_world: $(SRC)
+gtkmm4_playground: $(SRC)
 ifeq ($(OS),Windows_NT)
 ## This should be Windows
 	$(CXX) \
@@ -38,3 +38,14 @@ else
 	-std=c++17 \
 	`pkg-config --cflags --libs gtkmm-3.0`
 endif
+
+clean:
+	rm -rf $(OUTPUT_FILE).exe
+	rm -rf $(OUTPUT_FOLDER)/*.dll
+
+run:
+	./$(OUTPUT_FILE).exe
+
+## Copy rquired dlls to run it on Windows ! Credits to: https://stackoverflow.com/questions/49092784/
+distrib:
+	ldd $(OUTPUT_FILE) | grep '\/mingw.*\.dll' -o | xargs -I{} cp "{}" ./bin

@@ -7,7 +7,7 @@
 #include <iostream>
 
 MainWindow::MainWindow()
-: m_exit_button("exit")
+: m_exit_button("Exit")
 {
   set_title("Hello World ! Made with gtkmm3 and C++");
   set_default_size(400, 300);

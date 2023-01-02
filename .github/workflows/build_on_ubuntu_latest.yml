@@ -16,7 +16,7 @@ jobs:
     - name: '🧰 Checkout'     
       uses: actions/checkout@v3
 
-    - name: Create output folder
+    - name: '📁 Create output folder'
       run: mkdir bin
       
     - name: '🚧 Make'
