@@ -26,8 +26,8 @@ jobs:
       - name: '🧰 Checkout'     
         uses: actions/checkout@v3
 
-      - name: Create output folder
-        run: mkdir bin
+      - name: '📁 Create output folder'
+        run: mkdir Bin
       
       - name: '🚧 Make'
         run: make
@@ -37,4 +37,4 @@ jobs:
         with:
           name: build files
           path: |
-            bin
+            Bin
