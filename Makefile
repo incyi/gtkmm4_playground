@@ -5,10 +5,14 @@
 # the compiler: gcc for C program, define as g++ for C++
 CXX = g++
 
+BUILD_USER := $(shell whoami)
+BUILD_MACHINE := $(shell hostname)
+BUILD_GCC_VERSION := $(shell gcc --version | grep ^gcc | sed 's/^.* //g')
+
 # compiler flags:
 #  -g     - this flag adds debugging information to the executable file
 #  -Wall  - this flag is used to turn on most compiler warnings
-CFLAGS  = -g -Wall
+CFLAGS  = -g -Wall -DBUILD_MACHINE=\"$(BUILD_MACHINE)\" -DBUILD_USER=\"$(BUILD_USER)\" -DBUILD_GCC_VERSION=\"$(BUILD_GCC_VERSION)\"
 
 SRC += Source/Main.cpp
 SRC += Source/MainWindow.cpp
