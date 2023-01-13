@@ -9,7 +9,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:    
+    steps:
+    - name: '📶 sudo apt update'
+      run: sudo apt update
+      
     - name: '🔨 Install libgtkmm-3.0-dev'
       run: sudo apt-get install -y libgtkmm-3.0-dev
 
