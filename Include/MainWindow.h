@@ -6,9 +6,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <gtkmm/box.h>
+#include <gtkmm/grid.h>
 #include <gtkmm/button.h>
 #include <gtkmm/window.h>
+#include <gtkmm/aboutdialog.h>
 
 class MainWindow : public Gtk::Window
 {
@@ -17,15 +18,16 @@ public:
   virtual ~MainWindow();
 
 protected:
-  //Child widgets:
-  Gtk::Box m_box1;
-  Gtk::Button m_exit_button;
-  
   //Signal handlers:
+  void on_about_button_clicked();
   void on_exit_button_clicked();
+  void on_about_dialog_response(int response_id);
 
-private:
-
+  //Child widgets:
+  Gtk::Grid m_grid;
+  Gtk::Button m_about_button;
+  Gtk::Button m_exit_button;
+  Gtk::AboutDialog m_Dialog;
 };
 
 #endif //MAINWINDOW_H
