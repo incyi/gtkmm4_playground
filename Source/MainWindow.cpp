@@ -10,8 +10,8 @@
 MainWindow::MainWindow()
 : m_exit_button("Exit")
 {
-  set_title("Hello World ! Made with gtkmm3 and C++");
-  set_default_size(400, 300);
+  set_title("Gtkmm Playground ! Made with gtkmm3 and C++");
+  set_default_size(480, 360);
   // sets the border width of the window.
   set_border_width(10);
   // put the box into the main window.
