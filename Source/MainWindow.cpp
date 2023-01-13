@@ -4,6 +4,7 @@
  */
 
 #include <iostream>
+#include <string>
 
 #include "MainWindow.h"
 #include "Version.h"
@@ -13,6 +14,8 @@ MainWindow::MainWindow()
  m_about_button("About"),
  m_exit_button("Exit")
 {
+  char comment[80];
+
   set_title("Gtkmm Playground ! Made with gtkmm3 and C++");
   set_default_size(480, 360);
   // sets the border width of the window.
@@ -38,7 +41,8 @@ MainWindow::MainWindow()
   m_Dialog.set_program_name("Gtkmm4 Playground");
   m_Dialog.set_version(VERSION_STRING);
   m_Dialog.set_copyright("Inanc Yigit");
-  m_Dialog.set_comments("Made with C++ and gtkmm3.");
+  sprintf(comment, "Written in C++ and uses gtkmm3.\nBuild by: %s, on: %s, with GCC: %s.", BUILD_USER, BUILD_MACHINE, BUILD_GCC_VERSION);
+  m_Dialog.set_comments(comment);
   m_Dialog.set_license("LGPL");
   m_Dialog.set_website("https://github.com/incyi/gtkmm4_playground");
   m_Dialog.set_website_label("Github Repository");
