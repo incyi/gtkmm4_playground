@@ -22,7 +22,7 @@ jobs:
             mingw-w64-x86_64-gcc
             mingw-w64-x86_64-gtkmm3
             mingw-w64-x86_64-pkgconf
-            astyle
+            mingw-w64-x86_64-astyle
             
       - name: '🧰 Checkout'     
         uses: actions/checkout@v3
