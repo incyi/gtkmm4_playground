@@ -51,7 +51,12 @@ clean:
 	rm -rf $(OUTPUT_FOLDER)/*.dll
 
 run:
+ifeq ($(OS),Windows_NT)
 	./$(OUTPUT_FILE).exe
+else
+## This should be linux
+	./$(OUTPUT_FILE)
+endif
 
 ## Copy rquired dlls to run it on Windows ! Credits to: https://stackoverflow.com/questions/49092784/
 distrib:
