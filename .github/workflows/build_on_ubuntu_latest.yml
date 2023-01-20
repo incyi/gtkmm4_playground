@@ -15,7 +15,10 @@ jobs:
       
     - name: '🔨 Install libgtkmm-3.0-dev'
       run: sudo apt-get install -y libgtkmm-3.0-dev
-
+    
+    - name: '🔨 Install astyle'
+      run: sudo apt-get install -y astyle
+      
     - name: '🧰 Checkout'     
       uses: actions/checkout@v3
 
