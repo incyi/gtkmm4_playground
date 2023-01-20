@@ -25,6 +25,11 @@ INCLUDE_FOLDER += Include
 OUTPUT_FOLDER = Bin
 OUTPUT_FILE = $(OUTPUT_FOLDER)/gtkmm4_playground
 
+ASTYLE_OPTIONS = --style=google --indent=spaces=4
+
+format:
+	find . -name "*.cpp" -or -name "*.h" | xargs astyle $(ASTYLE_OPTIONS)
+
 gtkmm4_playground: $(SRC)
 ifeq ($(OS),Windows_NT)
 ## This should be Windows
