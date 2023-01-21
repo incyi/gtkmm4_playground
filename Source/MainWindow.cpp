@@ -10,8 +10,6 @@
 #include "Version.h"
 
 MainWindow::MainWindow() {
-    char comment[80];
-
     set_title("Gtkmm Playground ! Made with gtkmm3 and C++");
     set_default_size(480, 360);
     // Sets the border width of the window.
@@ -45,29 +43,6 @@ MainWindow::MainWindow() {
 
     // Show the widgets.
     show_all();
-
-    /** About dialog */
-    m_Dialog.set_transient_for(*this);
-    m_Dialog.set_program_name("Gtkmm4 Playground");
-    m_Dialog.set_version(VERSION_STRING);
-    m_Dialog.set_copyright("Inanc Yigit");
-    sprintf(comment, "Written in C++ and uses gtkmm3.\nBuild by: %s, on: %s, with G++: %s.", BUILD_USER, BUILD_MACHINE, BUILD_GCC_VERSION);
-    m_Dialog.set_comments(comment);
-    m_Dialog.set_license("LGPL");
-    m_Dialog.set_website("https://github.com/incyi/gtkmm4_playground");
-    m_Dialog.set_website_label("Github Repository");
-
-    /**
-    * Alternative for compiler version:
-    * std::string(__VERSION__)
-    */
-
-    std::vector<Glib::ustring> list_authors;
-    list_authors.push_back("Inanc Yigit");
-    m_Dialog.set_authors(list_authors);
-
-    m_Dialog.signal_response().connect(
-        sigc::mem_fun(*this, &MainWindow::on_about_dialog_response) );
 }
 
 MainWindow::~MainWindow() {
@@ -86,6 +61,27 @@ void MainWindow::on_about_dialog_response(int response_id) {
 }
 
 void MainWindow::on_about_clicked() {
+    char comment[80];
+
+    m_Dialog.set_transient_for(*this);
+    m_Dialog.set_program_name("Gtkmm4 Playground");
+    m_Dialog.set_version(VERSION_STRING);
+    m_Dialog.set_copyright("Inanc Yigit");
+    sprintf(comment, "Written in C++ and uses gtkmm3.\nBuild by: %s, on: %s, with G++: %s.", BUILD_USER, BUILD_MACHINE, BUILD_GCC_VERSION);
+    m_Dialog.set_comments(comment);
+    m_Dialog.set_license("LGPL");
+    m_Dialog.set_website("https://github.com/incyi/gtkmm4_playground");
+    m_Dialog.set_website_label("Github Repository");
+
+    /**
+    * Alternative for compiler version:
+    * std::string(__VERSION__)
+    */
+
+    std::vector<Glib::ustring> list_authors;
+    list_authors.push_back("Inanc Yigit");
+    m_Dialog.set_authors(list_authors);
+    m_Dialog.signal_response().connect(sigc::mem_fun(*this, &MainWindow::on_about_dialog_response) );
     m_Dialog.show();
 
     //Bring it to the front, in case it was already shown:
