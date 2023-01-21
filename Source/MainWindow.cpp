@@ -93,7 +93,17 @@ void MainWindow::on_exit_clicked() {
 }
 
 void MainWindow::on_status_clicked() {
+    std::string os_version = "Undefined";
+
+#ifdef _WIN32
+    // std::system("ver");
+#else
+    // std::system("uname -a");
+#endif
+
     Gtk::MessageDialog dialog(*this, "...text will be shown here... ", false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK);
+
+    // Gtk::MessageDialog dialog(*this, "OS version: " + os_version + "\n", false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK);
 
     dialog.run();
 }
