@@ -1,6 +1,6 @@
 /**
  * Version.h
- * 
+ *
  * For more information about "Semantic Versioning" see: https://semver.org/
  */
 
