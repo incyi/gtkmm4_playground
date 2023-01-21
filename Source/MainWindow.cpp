@@ -36,9 +36,9 @@ MainWindow::MainWindow() {
     m_menubar.append(m_menu_help);
 
     // Connect the menu items' signals to their corresponding slots
-    m_menu_file_new.signal_activate().connect(sigc::mem_fun(*this, &MainWindow::on_menu_file_new));
-    m_menu_file_quit.signal_activate().connect(sigc::mem_fun(*this, &MainWindow::on_exit_button_clicked));
-    m_menu_help_about.signal_activate().connect(sigc::mem_fun(*this, &MainWindow::on_about_button_clicked) );
+    m_menu_file_new.signal_activate().connect(sigc::mem_fun(*this, &MainWindow::on_status_clicked));
+    m_menu_file_quit.signal_activate().connect(sigc::mem_fun(*this, &MainWindow::on_exit_clicked));
+    m_menu_help_about.signal_activate().connect(sigc::mem_fun(*this, &MainWindow::on_about_clicked) );
 
     m_grid.add(m_menubar);
     add(m_grid);
@@ -85,22 +85,18 @@ void MainWindow::on_about_dialog_response(int response_id) {
     }
 }
 
-void MainWindow::on_about_button_clicked() {
+void MainWindow::on_about_clicked() {
     m_Dialog.show();
 
     //Bring it to the front, in case it was already shown:
     m_Dialog.present();
 }
 
-void MainWindow::on_exit_button_clicked() {
+void MainWindow::on_exit_clicked() {
     hide(); //to close the application.
 }
 
-void MainWindow::on_menu_file_new() {
-    on_version_button_clicked();
-}
-
-void MainWindow::on_version_button_clicked() {
+void MainWindow::on_status_clicked() {
     Gtk::MessageDialog dialog(*this, "...text will be shown here... ", false, Gtk::MESSAGE_INFO, Gtk::BUTTONS_OK);
 
     dialog.run();

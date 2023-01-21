@@ -21,11 +21,11 @@ class MainWindow : public Gtk::Window {
 
   protected:
     //Signal handlers:
-    void on_about_button_clicked();
-    void on_exit_button_clicked();
+    void on_about_clicked();
+    void on_exit_clicked();
     void on_about_dialog_response(int response_id);
     void on_menu_file_new();
-    void on_version_button_clicked();
+    void on_status_clicked();
 
     //Child widgets:
     Gtk::Grid m_grid;
