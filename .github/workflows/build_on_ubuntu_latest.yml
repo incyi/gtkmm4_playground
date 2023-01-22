@@ -10,6 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    
     - name: '📶 sudo apt update'
       run: sudo apt update
       
@@ -34,4 +35,3 @@ jobs:
         name: build files
         path: |
           Bin
-          
