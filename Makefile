@@ -5,18 +5,27 @@
 # the compiler: gcc for C program, define as g++ for C++
 CXX = g++
 
+BUILD_USER := $(shell whoami | grep -o '^\S*')
+BUILD_MACHINE := $(shell hostname | grep -o '^\S*')
+BUILD_GCC_VERSION := $(shell gcc --version | grep ^gcc | sed 's/^.* //g')
+
 # compiler flags:
 #  -g     - this flag adds debugging information to the executable file
 #  -Wall  - this flag is used to turn on most compiler warnings
-CFLAGS  = -g -Wall
+CFLAGS  = -g -Wall 
+CFLAGS += -DBUILD_MACHINE=\"$(BUILD_MACHINE)\"
+CFLAGS += -DBUILD_USER=\"$(BUILD_USER)\"
+CFLAGS += -DBUILD_GCC_VERSION=\"$(BUILD_GCC_VERSION)\"
 
-SRC += Source/Main.cpp
+SRC = Source/Main.cpp
 SRC += Source/MainWindow.cpp
 
 INCLUDE_FOLDER += Include
 
-OUTPUT_FILE = Bin/gtkmm4_playground
 OUTPUT_FOLDER = Bin
+OUTPUT_FILE = $(OUTPUT_FOLDER)/gtkmm4_playground
+
+ASTYLE_OPTIONS = --style=google --indent=spaces=4
 
 gtkmm4_playground: $(SRC)
 ifeq ($(OS),Windows_NT)
@@ -39,12 +48,20 @@ else
 	`pkg-config --cflags --libs gtkmm-3.0`
 endif
 
+format:
+	find . -name "*.cpp" -or -name "*.h" | xargs astyle $(ASTYLE_OPTIONS)
+
 clean:
 	rm -rf $(OUTPUT_FILE).exe
 	rm -rf $(OUTPUT_FOLDER)/*.dll
 
 run:
+ifeq ($(OS),Windows_NT)
 	./$(OUTPUT_FILE).exe
+else
+## This should be linux
+	./$(OUTPUT_FILE)
+endif
 
 ## Copy rquired dlls to run it on Windows ! Credits to: https://stackoverflow.com/questions/49092784/
 distrib:
