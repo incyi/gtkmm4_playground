@@ -38,6 +38,13 @@ class MainWindow : public Gtk::Window {
     Gtk::MenuItem m_menu_file_quit;
     Gtk::MenuItem m_menu_help_about;
     Gtk::AboutDialog m_Dialog;
+    Gtk::Box m_label_box;
+    Gtk::Label m_label1;
+    Gtk::Label m_label2;
+    Gtk::Label m_label3;
+    Gtk::Label m_label4;
+    Gtk::Label m_label5;
+
 };
 
 #endif //MAINWINDOW_H

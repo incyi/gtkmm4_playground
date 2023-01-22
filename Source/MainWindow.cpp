@@ -38,10 +38,24 @@ MainWindow::MainWindow() {
     m_menu_file_quit.signal_activate().connect(sigc::mem_fun(*this, &MainWindow::on_exit_clicked));
     m_menu_help_about.signal_activate().connect(sigc::mem_fun(*this, &MainWindow::on_about_clicked) );
 
-    m_grid.add(m_menubar);
-    add(m_grid);
+    // Create the labels
+    m_label1.set_text("Label 1");
+    m_label2.set_text("Label 2");
+    m_label3.set_text("Label 3");
+    m_label4.set_text("Label 4");
+    m_label5.set_text("Label 5");
 
-    // Show the widgets.
+    // Add the labels to the label box
+    m_label_box.pack_start(m_label1, true, true, 5);
+    m_label_box.pack_start(m_label2, true, true, 5);
+    m_label_box.pack_start(m_label3, true, true, 5);
+    m_label_box.pack_start(m_label4, true, true, 5);
+    m_label_box.pack_start(m_label5, true, true, 5);
+
+    // Add the menu bar, label box to the main grid and show everything
+    m_grid.attach(m_menubar, 0, 0, 1, 1);
+    m_grid.attach(m_label_box, 0, 1, 1, 1);
+    add(m_grid);
     show_all();
 }
 
